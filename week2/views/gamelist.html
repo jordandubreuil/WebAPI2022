@@ -14,6 +14,11 @@
             <a href="#">Game List</a>
         </nav>
         <p>list games here</p>
+        <style>
+            button{
+                margin-left: 10px;
+            }
+        </style>
         <script>
             fetch('/getData').then(function(games){
                 games.json().then(function(thegames){
@@ -23,6 +28,7 @@
                         var gameElement = document.createElement('p')
                         gameElement.innerHTML = game.game
                         document.getElementById('container').appendChild(gameElement)
+                        
 
                         //Add a delete button
                         var deleteButton = document.createElement('button')
