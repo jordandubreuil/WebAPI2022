@@ -32,19 +32,36 @@ var about = function(req,res){
 }
 
 var profile = function(req,res){
+    console.log(req.body)
     res.render('profile', {
-        name:"Smooth",
-        email:"smooth@neit.edu",
-        phonenumber:"4014677744",
-        address:"1 New England Tech Blvd East Greenwich RI",
-        job:"Game Programmer",
+        name:req.body.name,
+        email:req.body.email,
+        phonenumber:req.body.number,
+        address:req.body.address,
+        job:req.body.job,
+        selection:req.body.selection,
+        checked:req.body.checked
     })
 }
+
+var dataTest = function(req,res){
+    res.render('dataEntry')
+}
+
+var testData = function(req,res){
+    console.log("Working")
+    console.log(req.body)
+    //res.redirect('/profile')
+  //  res.redirect('/profile')//, req.body)
+}
+
 
 
 module.exports = {
     home,
     contact,
     about,
-    profile
+    profile,
+    dataTest,
+    testData
 }

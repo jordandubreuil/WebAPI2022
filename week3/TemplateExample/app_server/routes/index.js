@@ -6,6 +6,9 @@ var ctrlLocations = require('../controllers/locations')
 router.get('/', ctrlLocations.home)
 router.get('/contact', ctrlLocations.contact)
 router.get('/about', ctrlLocations.about)
-router.get('/profile', ctrlLocations.profile)
+router.post('/profile', ctrlLocations.profile)
+router.get('/formEntry', ctrlLocations.dataTest)
+
+router.get('/testData', ctrlLocations.testData)
 
 module.exports = router
