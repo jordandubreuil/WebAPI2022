@@ -60,11 +60,11 @@
             var data = {
                 'author':document.querySelector('input[name="author"]').value,
                 'rating':document.querySelector('input[name="rating"]').value,
-                'review':document.querySelector('input[name="review"]').value
+                'reviewText':document.querySelector('input[name="reviewText"]').value
             }
-
+            console.log(data)
             var verbfield = document.querySelector('select[name="verb"]')
-            var verb = verbfield.options(verbfield.selectedIndex).value
+            var verb = verbfield.options[verbfield.selectedIndex].value
             var rescource = document.querySelector('input[name="resource"]').value
             var results = document.querySelector('textarea[name="results"]')
             var url = `http://localhost:3000/api/v1/${rescource}`
@@ -81,9 +81,17 @@
                 cache:'default'
             }
 
+            //puts post in the request
+            if(['POST','PUT'].indexOf(verb)>-1){
+
+                myInit.body = JSON.stringify(data)
+                console.log(myInit)
+            }
+
             var myrequest = new Request(url, myInit)
 
             fetch(myrequest).then(function(response){
+                console.log(response)
                 var contentType = response.headers.get('content-type')
 
                 if(contentType && contentType.includes('application/json')){
